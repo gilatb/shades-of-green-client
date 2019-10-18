@@ -35,12 +35,8 @@ const Place = ({ match, places = [], votedPlaces = [], sendVotedPlacesToRedux })
   if (!place) return null;
   localStorage.setItem('lastPlace', JSON.stringify(place))
 
-  // geting the photo URL, no need for third fetch for the api:
-  // const PHOTOS_API = `https://maps.googleapis.com/maps/api/place/photo?`
   const PHOTOS_API = process.env.REACT_APP_PHOTOS_API
-
-  const API_KEY = `AIzaSyA-sz8s67f8uMvjPO5KX9gC7kjTTQw2GMc`;
-  // const API_KEY = process.env.API_KEY
+  const API_KEY = process.env.API_KEY
   const MAX_WIDTH = 400;
   const GET_PHOTOS_URL = place && `${PHOTOS_API}maxwidth=${MAX_WIDTH}&photoreference=${place.photos[0].photo_reference}&key=${API_KEY}`;
 
@@ -70,19 +66,19 @@ const Place = ({ match, places = [], votedPlaces = [], sendVotedPlacesToRedux })
         width="300vw"
       />
       {getScore(place, votedPlaces)}
-      <div className="RatingDiv"> 
-      {rating
-        ? (
-          <div>
-          <h3>Thank you for your rating! <span role="img" aria-label="Back">🙏🏼</span></h3>
-          <p>You voted {rating} for this place</p>
-        </div>)
-        : <StarVoting
-        placeId={placeIdFromURL}
-        rating={rating}
-        setVote={fetchPostVote}
-        />
-      }
+      <div className="RatingDiv">
+        {rating
+          ? (
+            <div>
+              <h3>Thank you for your rating! <span role="img" aria-label="Back">🙏🏼</span></h3>
+              <p>You voted {rating} for this place</p>
+            </div>)
+          : <StarVoting
+            placeId={placeIdFromURL}
+            rating={rating}
+            setVote={fetchPostVote}
+          />
+        }
       </div>
       <div className="MoreDetails">
         <h3>Address</h3>
