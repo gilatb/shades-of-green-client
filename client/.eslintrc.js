@@ -6,6 +6,7 @@ module.exports = {
     "extends": "eslint:recommended",
     "globals": {
         "Atomics": "readonly",
+        "process":"readonly",
         "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
