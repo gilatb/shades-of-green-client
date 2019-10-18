@@ -10,7 +10,8 @@ import { Filters } from '../components/Filters';
 import { getVotedPlaces } from '../actions'
 
 const PLACES_API = process.env.REACT_APP_PLACES_API_URL;
-const REACT_APP_API_KEY = process.env.API_KEY;
+const MAPS_URL = process.env.REACT_APP_MAPS_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRedux }) => {
 
@@ -46,7 +47,7 @@ const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRe
   // const [radiusFilter, setRadiusFilter] = useState(null);
 
   //✅ handling with the places list.
-  const GET_PLACES_URL = `${PLACES_API}key=${REACT_APP_API_KEY}&location=${location.lat},${location.lng}&radius=2000&keyword=${typeFilter}`;
+  const GET_PLACES_URL = `${PLACES_API}key=${API_KEY}&location=${location.lat},${location.lng}&radius=2000&keyword=${typeFilter}`;
 
   // more options for place types: 👇🏻
   // const PLACE_TYPES = `restaurant,cafe,clothing_store,gym` 
@@ -98,7 +99,7 @@ const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRe
       <WrappedMap
         className="Map"
         location={location}
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyA-sz8s67f8uMvjPO5KX9gC7kjTTQw2GMc&libraries=geometry,drawing,places`}
+        googleMapURL={`${MAPS_URL}key=${API_KEY}&libraries=geometry,drawing,places`}
         loadingElement={<div style={{ height: `80%` }} />}
         containerElement={<div style={{ height: `500px` }} />}
         mapElement={<div style={{ height: `100%` }} />}

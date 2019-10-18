@@ -22,7 +22,7 @@ const paintVotedPlace = (markerPlace, votedPlaces) => {
 }
 
 
-const Map = ({ location, places = [], selectedPlace, setSelectedPlace, votedPlaces }) => {
+const MapComponent = ({ location, places = [], selectedPlace, setSelectedPlace, votedPlaces }) => {
   return (
     <GoogleMap
       defaultCenter={location}
@@ -77,5 +77,5 @@ const Map = ({ location, places = [], selectedPlace, setSelectedPlace, votedPlac
 }
 
 
-export const WrappedMap = withScriptjs(withGoogleMap(Map));
+export const WrappedMap = withScriptjs(withGoogleMap(MapComponent));
 
