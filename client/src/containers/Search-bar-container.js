@@ -20,7 +20,7 @@ export const SearchBar = ({ setLocation, searchedPlace, setSearchedPlace }) => {
       <PlacesAutocomplete
         value={searchedPlace}
         onChange={setSearchedPlace}
-        onSelect={handleSelect} // when the user selects one option
+        onSelect={handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
           <div className="SearchAutoCompleteContainer">

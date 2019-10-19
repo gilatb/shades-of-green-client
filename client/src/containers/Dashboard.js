@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import '../App.css';
 import { Header } from '../components/Header';
 import { updatePlaces } from '../actions';
-import { WrappedMap } from '../components/Map';
+import  { MapComponent } from '../components/Map';
 import { SearchBar } from './Search-bar-container';
 import { Filters } from '../components/Filters';
 import { getVotedPlaces } from '../actions'
 
 const PLACES_API = process.env.REACT_APP_PLACES_API_URL;
-const REACT_APP_API_KEY = process.env.API_KEY;
+const MAPS_URL = process.env.REACT_APP_MAPS_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRedux }) => {
 
@@ -39,19 +40,15 @@ const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRe
   const [searchedPlace, setSearchedPlace] = useState('');
   //if a place has been seleced, should open infoWindow
   const [selectedPlace, setSelectedPlace] = useState(null);
-
+  const [zoom, setZoom] = useState(12);
   // filters states 
   // const [scoreRangeFilter, setScoreRangeFilter] = useState(null);
   const [typeFilter, setTypeFilter] = useState('restaurant');
   // const [radiusFilter, setRadiusFilter] = useState(null);
 
   //✅ handling with the places list.
-  const GET_PLACES_URL = `${PLACES_API}key=${REACT_APP_API_KEY}&location=${location.lat},${location.lng}&radius=2000&keyword=${typeFilter}`;
+  const GET_PLACES_URL = `${PLACES_API}key=${API_KEY}&location=${location.lat},${location.lng}&radius=2000&keyword=${typeFilter}`;
 
-  // more options for place types: 👇🏻
-  // const PLACE_TYPES = `restaurant,cafe,clothing_store,gym` 
-  // const KEY_WORDS_ARR = ['restaurant', 'cafe', 'clothing', 'supermarket', 'shoes', 'hair'];
-  // const GET_PLACES_URL = `${PLACES_API}key=${API_KEY}&location=${location.lat},${location.lng}&radius=2000&keyword=${KEY_WORDS_ARR[0]}`;
 
 
   const fetchPlaces = () => {
@@ -91,17 +88,13 @@ const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRe
         setSearchedPlace={setSearchedPlace}
       />
       <Filters
-        // setScoreRangeFilter={setScoreRangeFilter}
         setTypeFilter={setTypeFilter}
-      // setRadiusFilter={setRadiusFilter}
       />
-      <WrappedMap
+      <MapComponent
         className="Map"
         location={location}
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyA-sz8s67f8uMvjPO5KX9gC7kjTTQw2GMc&libraries=geometry,drawing,places`}
-        loadingElement={<div style={{ height: `80%` }} />}
-        containerElement={<div style={{ height: `500px` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
+        zoom={zoom}
+        setZoom={setZoom}
         setSelectedPlace={setSelectedPlace}
         selectedPlace={selectedPlace}
         places={places}

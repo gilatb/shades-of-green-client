@@ -29,7 +29,9 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAE71vQRELEoUHanJup0hhNX1Cup3_bXok&libraries=places"></script>
+<!-- TODO: change this: -->
+    <script src=%REACT_APP_MAPS_URL%key=%REACT_APP_API_KEY%&libraries=places></script> 
+
     <!-- script for service workers to make it PWA -->
     <!-- <script>
       if ('serviceWorker' in navigator) {
