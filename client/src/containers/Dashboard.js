@@ -40,7 +40,7 @@ const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRe
   const [searchedPlace, setSearchedPlace] = useState('');
   //if a place has been seleced, should open infoWindow
   const [selectedPlace, setSelectedPlace] = useState(null);
-
+  const [zoom, setZoom] = useState(12);
   // filters states 
   // const [scoreRangeFilter, setScoreRangeFilter] = useState(null);
   const [typeFilter, setTypeFilter] = useState('restaurant');
@@ -82,21 +82,19 @@ const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRe
   return (
     <div className="Dashboard">
       <Header />
-      {/* <SearchBar
+      <SearchBar
         setLocation={setLocation}
         searchedPlace={searchedPlace}
         setSearchedPlace={setSearchedPlace}
-      /> */}
+      />
       <Filters
         setTypeFilter={setTypeFilter}
       />
       <MapComponent
         className="Map"
         location={location}
-        // googleMapURL={`${MAPS_URL}key=${API_KEY}&libraries=geometry,drawing,places`}
-        // loadingElement={<div style={{ height: `80%` }} />}
-        // containerElement={<div style={{ height: `500px` }} />}
-        // mapElement={<div style={{ height: `100%` }} />}
+        zoom={zoom}
+        setZoom={setZoom}
         setSelectedPlace={setSelectedPlace}
         selectedPlace={selectedPlace}
         places={places}

@@ -9,7 +9,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 
 
 
-export const MapComponent = ({ location, places = [], selectedPlace, setSelectedPlace, votedPlaces }) => {
+export const MapComponent = ({ location, places = [], selectedPlace, setSelectedPlace, votedPlaces, zoom, setZoom }) => {
   
   const getSelectedInfo = (selectedPlace, votedPlaces) => {
     const match = votedPlaces.find(votedPlace => selectedPlace.place_id === votedPlace.google_id)
@@ -37,8 +37,8 @@ export const MapComponent = ({ location, places = [], selectedPlace, setSelected
 
   const markerClickHandler = (e, place) => {
     setSelectedPlace(place)
-    console.log('place: ', place);
     infoOpen ? setInfoOpen(false) : setInfoOpen(true);
+    zoom < 13 && setZoom(13);
   }
 
   const renderMap = () => {
@@ -63,15 +63,16 @@ export const MapComponent = ({ location, places = [], selectedPlace, setSelected
           )
         })}
 
-        {selectedPlace && (
+        {selectedPlace && infoOpen && (
           <InfoWindow
             onLoad={infoWindow => {
               console.log('infoWindow: ', infoWindow)
             }}
-            // anchor={selectedPlace.geometry.location} //TODO: should be here?
-            // anchor={markerMap[selectedPlace.google_id]}
-            // anchor={selectedPlace.google_id}
-            position={selectedPlace.geometry.location}
+            // position={selectedPlace.geometry.location}
+            position={{
+              lat: selectedPlace.geometry.location.lat + 0.002,
+              lng: selectedPlace.geometry.location.lng
+            }}
             onCloseClick={() => {
               setInfoOpen(false)
               setSelectedPlace(null);
