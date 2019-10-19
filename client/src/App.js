@@ -9,8 +9,6 @@ import { LandPage } from './components/LandPage';
 
 
 function App () { 
-  console.log(process.env);
-   
   return (
     <Router>
       <div className="App">

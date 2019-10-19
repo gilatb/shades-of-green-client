@@ -1,8 +1,8 @@
 
 *TODO*
 [ ] change library from react-google-maps to @react-google-maps
-[ ] move fetch to its own service 
 [ ] add thunk method using a library and add more stuff to redux
+[ ] move fetch to its own service 
 [ ] improve performance (fetching service) using memoize 
 [ ] write the README file
 [ ] make sure the app stand alone with all dependencies
@@ -15,3 +15,6 @@ Services to add:
 [ ] geolocation
 [ ] fetch places 
 [ ] 
+
+Move to redux:
+[ ] location

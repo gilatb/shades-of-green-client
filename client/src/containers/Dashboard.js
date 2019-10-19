@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import '../App.css';
 import { Header } from '../components/Header';
 import { updatePlaces } from '../actions';
-import { WrappedMap } from '../components/Map';
+import  { MapComponent } from '../components/Map';
 import { SearchBar } from './Search-bar-container';
 import { Filters } from '../components/Filters';
 import { getVotedPlaces } from '../actions'
@@ -49,10 +49,6 @@ const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRe
   //✅ handling with the places list.
   const GET_PLACES_URL = `${PLACES_API}key=${API_KEY}&location=${location.lat},${location.lng}&radius=2000&keyword=${typeFilter}`;
 
-  // more options for place types: 👇🏻
-  // const PLACE_TYPES = `restaurant,cafe,clothing_store,gym` 
-  // const KEY_WORDS_ARR = ['restaurant', 'cafe', 'clothing', 'supermarket', 'shoes', 'hair'];
-  // const GET_PLACES_URL = `${PLACES_API}key=${API_KEY}&location=${location.lat},${location.lng}&radius=2000&keyword=${KEY_WORDS_ARR[0]}`;
 
 
   const fetchPlaces = () => {
@@ -86,23 +82,21 @@ const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRe
   return (
     <div className="Dashboard">
       <Header />
-      <SearchBar
+      {/* <SearchBar
         setLocation={setLocation}
         searchedPlace={searchedPlace}
         setSearchedPlace={setSearchedPlace}
-      />
+      /> */}
       <Filters
-        // setScoreRangeFilter={setScoreRangeFilter}
         setTypeFilter={setTypeFilter}
-      // setRadiusFilter={setRadiusFilter}
       />
-      <WrappedMap
+      <MapComponent
         className="Map"
         location={location}
-        googleMapURL={`${MAPS_URL}key=${API_KEY}&libraries=geometry,drawing,places`}
-        loadingElement={<div style={{ height: `80%` }} />}
-        containerElement={<div style={{ height: `500px` }} />}
-        mapElement={<div style={{ height: `100%` }} />}
+        // googleMapURL={`${MAPS_URL}key=${API_KEY}&libraries=geometry,drawing,places`}
+        // loadingElement={<div style={{ height: `80%` }} />}
+        // containerElement={<div style={{ height: `500px` }} />}
+        // mapElement={<div style={{ height: `100%` }} />}
         setSelectedPlace={setSelectedPlace}
         selectedPlace={selectedPlace}
         places={places}
