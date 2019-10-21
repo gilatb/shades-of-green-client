@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/icon-256.png" />
+  <img src="./client/src/images/icon-256.png" />
 </p>
 
 # shades-of-green-client
@@ -10,16 +10,8 @@ Shades of Green is a web app that allows you to search for places around you, or
 ## Screenshots
 
 <p align="center">
-  <img src="images/mockups.png" />
+  <img src="./client/src/images/mockups.png" />
 </p>
-
-## Tech stack: 
-
-* React.js 
-* Express.js 
-* PostgreSQL 
-* Redux 
-* Google Maps API
 
 
 ## Getting started
@@ -38,11 +30,13 @@ Shades of Green is a web app that allows you to search for places around you, or
    ```
 
 3. Start development server
+
   ```bash
-    npm start
-    ```
+  npm start
+  ```
 
 ## Tech Stack
+
 * [React.js](https://reactjs.org)
 * [Redux](https://redux.js.org/) 
 * [Express.js](https://expressjs.com/)
