@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 import App from './App';
-import reducers from './reducers';
+import reducers from './redux/reducers';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 require('dotenv').config();

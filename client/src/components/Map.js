@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
-// import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import { NavLink } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-
-
-
 
 export const MapComponent = ({ location, places = [], selectedPlace, setSelectedPlace, votedPlaces, zoom, setZoom }) => {
   
@@ -65,10 +61,6 @@ export const MapComponent = ({ location, places = [], selectedPlace, setSelected
 
         {selectedPlace && infoOpen && (
           <InfoWindow
-            onLoad={infoWindow => {
-              console.log('infoWindow: ', infoWindow)
-            }}
-            // position={selectedPlace.geometry.location}
             position={{
               lat: selectedPlace.geometry.location.lat + 0.002,
               lng: selectedPlace.geometry.location.lng

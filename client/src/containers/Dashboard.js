@@ -10,7 +10,6 @@ import { Filters } from '../components/Filters';
 import { getVotedPlaces } from '../actions'
 
 const PLACES_API = process.env.REACT_APP_PLACES_API_URL;
-const MAPS_URL = process.env.REACT_APP_MAPS_URL;
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const Dashboard = ({ places, sendPlacesToRedux, votedPlaces, sendVotedPlacesToRedux }) => {
