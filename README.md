@@ -1,7 +1,7 @@
 # Shades of Green | Client
 
 <p align="center">
-  <img src="./client/src/images/icon-256.png" />
+  <img src="./src/images/icon-256.png" />
 </p>
 
 
@@ -11,7 +11,7 @@ Shades of Green is a web app that allows you to search for places around you, or
 ## Screenshots
 
 <p align="center">
-  <img src="./client/src/images/mockups.png" />
+  <img src="./src/images/mockups.png" />
 </p>
 
 
